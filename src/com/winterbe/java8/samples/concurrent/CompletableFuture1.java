@@ -9,11 +9,11 @@ import java.util.concurrent.ExecutionException;
 public class CompletableFuture1 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        CompletableFuture<String> future = new CompletableFuture<>();
+        CompletableFuture<String> donovanfuture = new CompletableFuture<>();
 
-        future.complete("42");
+        donovanfuture.complete("42");
 
-        future
+        donovanfuture
                 .thenAccept(System.out::println)
                 .thenAccept(v -> System.out.println("done"));
 
