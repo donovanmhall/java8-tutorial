@@ -14,22 +14,22 @@ public class Lock6 {
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
-        StampedLock lock = new StampedLock();
+        StampedLock Donovanlock = new StampedLock();
 
         executor.submit(() -> {
-            long stamp = lock.readLock();
+            long stamp = Donovanlock.readLock();
             try {
                 if (count == 0) {
-                    stamp = lock.tryConvertToWriteLock(stamp);
+                    stamp = Donovanlock.tryConvertToWriteLock(stamp);
                     if (stamp == 0L) {
                         System.out.println("Could not convert to write lock");
-                        stamp = lock.writeLock();
+                        stamp = Donovanlock.writeLock();
                     }
                     count = 23;
                 }
                 System.out.println(count);
             } finally {
-                lock.unlock(stamp);
+                Donovanlock.unlock(stamp);
             }
         });
 
